@@ -1,17 +1,20 @@
 import pygame
 from sys import exit 
 #from characters import Player
+image = pygame.image.load("assets/sprites/soldier_front.png")
 
 class Player:
     
-    def __init__(self,health,bullets,image,x,y):
+    def __init__(self,health,bullets,image1,x,y):
         self.health = health
         self.bullets = bullets
         self.x = x
         self.y = y
-        self.image_ren = pygame.image.load(image)
-        self.rect = self.image_ren.get_rect()
-        
+        self.image1 = image1
+        self.rect = self.image1.get_rect(center = (self.x, self.y))
+        #default coordinates
+        self.x = 280
+        self.y = 405
     def movement(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w]:
@@ -28,28 +31,27 @@ class Player:
             print(self.x)
     
     def render(self):
-        screen.blit(self.image_ren, self.rect.topleft)
+        screen.blit(self.image1, (self.x,self.y))
 
 pygame.init()
 screen = pygame.display.set_mode((600,450))
 pygame.display.set_caption("Dungeon game")
 clock = pygame.time.Clock()
 #font = pygame.font.Font("assets/fonts/Pixeltype.ttf", 50)
-soldier = pygame.image.load("assets/sprites/soldier_front.png")
 map = pygame.image.load("assets/sprites/test_background.png")
-player_coordinates = (0,0)
-player_1 = Player(100,100,"assets/sprites/soldier_front.png",205,550)
+player_1 = Player(100,100,image,205,550)
 
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-    #screen.fill("white")
+    screen.fill("white")
     screen.blit(map,(0,0))
     player_1.movement()
-    player_1.render()
+    Player.render(player_1)
     #screen.blit(font,(0,0))
+    #screen.blit(test, (100,100))
 
     pygame.display.update()
     clock.tick(60)
