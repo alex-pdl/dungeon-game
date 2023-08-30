@@ -3,10 +3,9 @@ from sys import exit
 
 pygame.init()
 screen = pygame.display .set_mode((480,360))
-pygame.display.set_caption("dungeon game")
+pygame.display.set_caption("Dungeon game")
 clock = pygame.time.Clock()
 test_font = pygame.font.Font("Pixeltype.ttf", 50)
-
 text_surface = test_font.render("Dungeon", None, "white")
 #background_surface = pygame.image.load("")
 
