@@ -9,7 +9,7 @@ clock = pygame.time.Clock()
 #font = pygame.font.Font("assets/fonts/Pixeltype.ttf", 50)
 map = pygame.image.load("assets/sprites/test_background.png")
 player = pygame.sprite.GroupSingle()
-player.add(Player(200,300))
+player.add(Player())
 
 while True:
     for event in pygame.event.get():
@@ -23,6 +23,6 @@ while True:
     #screen.blit(font,(0,0))
     #screen.blit(test, (100,100))
     player.draw(screen)
-    Player.player_input(player)
+    player.update()
     pygame.display.update()
     clock.tick(60)
