@@ -33,8 +33,21 @@ class Player(pygame.sprite.Sprite):
         
 
     def player_input(self):
+        
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_w]:
+        if keys[pygame.K_w] and keys[pygame.K_a]:
+            self.rect.x -=5
+            self.rect.y -=5
+        elif keys[pygame.K_w] and keys[pygame.K_d]:
+            self.rect.y -=5 
+            self.rect.x +=5
+        elif keys[pygame.K_s] and keys[pygame.K_a]:
+            self.rect.y +=5
+            self.rect.x -=5
+        elif keys[pygame.K_s] and keys[pygame.K_d]:
+            self.rect.y +=5
+            self.rect.x +=5
+        elif keys[pygame.K_w]:
             self.rect.y -= 5
         elif keys[pygame.K_s]:
             self.rect.y += 5
@@ -42,6 +55,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.x -= 5
         elif keys[pygame.K_d]:
             self.rect.x += 5
+
 
     def update(self):
         self.player_input()
