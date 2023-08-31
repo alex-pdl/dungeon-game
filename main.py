@@ -8,6 +8,7 @@ screen = pygame.display.set_mode((600,450))
 pygame.display.set_caption("Dungeon game")
 clock = pygame.time.Clock()
 
+
 #font = pygame.font.Font("assets/fonts/Pixeltype.ttf", 50)
 #loading map and player sprite from Player class
 map = pygame.image.load("assets/sprites/test_background.png")
@@ -29,4 +30,4 @@ while True:
     player.update()
     
     pygame.display.update()
-    clock.tick(60)
+    clock.tick(5)
