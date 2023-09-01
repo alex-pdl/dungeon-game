@@ -29,6 +29,6 @@ while True:
     #player sprite is drawn and moved/animated on the screen
     player.draw(screen)
     player.update()
-    time.sleep(0.07)
+    time.sleep(0.05)
     pygame.display.update()
     clock.tick(60)

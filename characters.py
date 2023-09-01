@@ -26,13 +26,13 @@ class Player(pygame.sprite.Sprite):
 
         
         #creating arrays containing the sprites needed to render animation
-        self.player_front_move = [player_front_move_0,player_front_move_1]
+        self.player_front_move = [player_front_move_0,self.player_still_front,player_front_move_1]
         self.player_front_move_index = 0
-        self.player_back_move = [player_back_move_0,player_back_move_1]
+        self.player_back_move = [player_back_move_0,self.player_still_back,player_back_move_1]
         self.player_back_move_index = 0
-        self.player_right_move = [player_right_move_0,player_right_move_1]
+        self.player_right_move = [player_right_move_0,self.player_still_right,player_right_move_1]
         self.player_right_move_index = 0
-        self.player_left_move = [player_left_move_0,player_left_move_1]
+        self.player_left_move = [player_left_move_0,self.player_still_left,player_left_move_1]
         self.player_left_move_index = 0
 
         self.image = pygame.image.load("assets/sprites/soldier/soldier_still_front.png")
@@ -70,32 +70,32 @@ class Player(pygame.sprite.Sprite):
         if keys[pygame.K_w]:
             self.image = self.player_still_back
             self.player_back_move_index += 1
-            if self.player_back_move_index >= 2:
+            if self.player_back_move_index >= 3:
                 self.player_back_move_index = 0
             self.image = self.player_back_move[self.player_back_move_index]
             
         elif keys[pygame.K_s]:
             self.image = self.player_still_front
             self.player_front_move_index += 1
-            if self.player_front_move_index >= 2:
+            if self.player_front_move_index >= 3:
                 self.player_front_move_index = 0
             self.image = self.player_front_move[self.player_front_move_index]
 
         elif keys[pygame.K_a]:
             self.image = self.player_still_left
             self.player_left_move_index += 1
-            if self.player_left_move_index >= 2:
+            if self.player_left_move_index >= 3:
                 self.player_left_move_index = 0
             self.image = self.player_left_move[self.player_left_move_index]
             
         elif keys[pygame.K_d]:
             self.image = self.player_still_right
             self.player_right_move_index += 1
-            if self.player_right_move_index >= 2:
+            if self.player_right_move_index >= 3:
                 self.player_right_move_index = 0
             self.image = self.player_right_move[self.player_right_move_index]
 
     def update(self):
         self.player_input()
         self.animation_state()
-            
+        
