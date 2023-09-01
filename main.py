@@ -7,6 +7,15 @@ from map import *
 screen_width = 720
 screen_height = 480
 
+camera_x = 0
+camera_y = 0
+
+player_x = screen_width // 2
+player_y = screen_height // 2
+
+camera_x = player_x - (screen_width // 2)
+camera_y = player_y - (screen_height // 2)
+
 pygame.init()
 screen = pygame.display.set_mode((screen_width,screen_height))
 pygame.display.set_caption("Dungeon game")
