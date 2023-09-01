@@ -73,10 +73,8 @@ class Player(pygame.sprite.Sprite):
             self.image = self.player_left_jump
 
     def gravity_calc(self):
-
-
-
-
+        pass
+     
     def update(self):
         self.player_input()
         self.animation_state()

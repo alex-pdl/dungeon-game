@@ -18,6 +18,8 @@ level = [
 
 tile_size = 48
 def map(level_info,surface):
+    
+    #rendering the tiles on the screen
     tiles = pygame.sprite.Group()
     for row_index,row in enumerate(level_info):
         for column_index,column in enumerate(row):
@@ -26,4 +28,5 @@ def map(level_info,surface):
                 y = row_index*tile_size
                 tile = Tile(column,(x,y))
                 tiles.add(tile)
+
     tiles.draw(surface)
