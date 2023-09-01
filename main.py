@@ -3,6 +3,7 @@ import time
 from sys import exit 
 from classes import *
 from map import *
+
 screen_width = 720
 screen_height = 480
 
