@@ -29,7 +29,7 @@ while True:
     #player sprite is drawn and moved/animated on the screen
     player.draw(screen)
     player.update()
-    time.sleep(0.04)
+    time.sleep(0.02)
     map(level,screen)
     
     

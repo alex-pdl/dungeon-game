@@ -8,12 +8,12 @@ level = [
 '                        ',
 '                        ',
 '                        ',
-'XXXXX       XXXXXXXXXXXX',
-'XXXXXXXX    XXXXXXXXXXXX',
-'XXXXXXXX    XXXXXXXXXXXX',
-'XXXXXXXX    XXXXXXXXXXXX',
-'XXXXXXXX    XXXXXXXXXXXX',
-'XXXXXXXX    XXXXXXXXXXXX',
+'NNNNN       NNNNNNNNNNNN',
+'NNMNNCNN    NTNNNNNNNNNN',
+'NNNNNNNN    NNNNNNNNNNNN',
+'NNNNNNNN    NNNNNNNNNNNN',
+'NNNNNNNN    NNNNNNNNNNNN',
+'NNNNNNNN    NNNNNNNNNNNN',
 ]
 
 tile_size = 48
