@@ -4,10 +4,11 @@ import threading
 
 clock = pygame.time.Clock()
 class Player(pygame.sprite.Sprite):
-    condition = False
+    gravity = -9.81
     def __init__(self):
         super().__init__()
-        #creating height
+        #creating gravity
+        self.player_gravity = 0
         
         #importing "still" sprites
         self.player_still_front = pygame.image.load("assets/sprites/soldier/soldier_still_front.png")
@@ -72,12 +73,20 @@ class Player(pygame.sprite.Sprite):
         elif keys[pygame.K_SPACE] and self.image == self.player_left_move[0] or keys[pygame.K_SPACE] and self.image == self.player_left_move[1] or keys[pygame.K_SPACE] and self.image == self.player_left_move[2]:
             self.image = self.player_left_jump
 
-    def gravity_calc(self):
-        pass
-     
+    def gravity(self):
+        keys = pygame.key.get_pressed()
+        self.player_gravity += 1
+        self.rect.y += self.player_gravity
+        if keys[pygame.K_SPACE]:
+            self.player_gravity = -15
+        if self.rect.y >210:
+            self.rect.y = 210
+
     def update(self):
         self.player_input()
         self.animation_state()
+        self.gravity()
+
             
 class Tile(pygame.sprite.Sprite):
     def __init__(self,type,pos):

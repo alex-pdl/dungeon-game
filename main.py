@@ -25,12 +25,13 @@ while True:
             pygame.quit()
             exit()
     #rendering map and background on screen
-    screen.fill("white")
+    screen.fill("grey")
     
     #player sprite is drawn and moved/animated on the screen
+
     player.draw(screen)
     player.update()
-    time.sleep(0.02)
+    time.sleep(0)
     map(level,screen)
     
     
