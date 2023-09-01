@@ -32,7 +32,7 @@ class Player(pygame.sprite.Sprite):
         self.player_back_move_index = 0
         self.player_right_move = [player_right_move_0,self.player_still_right,player_right_move_1]
         self.player_right_move_index = 0
-        self.player_left_move = [player_left_move_0,self.player_still_left,player_left_move_1]
+        self.player_left_move = [player_left_move_0,self.player_still_left,pygame.image.load("assets/sprites/soldier/Untitled1.png")]
         self.player_left_move_index = 0
 
         self.image = pygame.image.load("assets/sprites/soldier/soldier_still_front.png")

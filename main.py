@@ -5,7 +5,7 @@ from characters import Player
 
 
 pygame.init()
-screen = pygame.display.set_mode((600,450))
+screen = pygame.display.set_mode((750,500))
 pygame.display.set_caption("Dungeon game")
 clock = pygame.time.Clock()
 
