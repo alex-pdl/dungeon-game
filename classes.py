@@ -79,8 +79,8 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += self.player_gravity
         if keys[pygame.K_SPACE]:
             self.player_gravity = -15
-        if self.rect.y >210:
-            self.rect.y = 210
+        #if self.rect.y >210:
+            #self.rect.y = 210
 
     def update(self):
         self.player_input()

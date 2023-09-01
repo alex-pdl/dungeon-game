@@ -1,6 +1,5 @@
 import pygame
-from classes import Tile
-
+from classes import Tile, Player
 level = [
 '                        ',
 '                        ',
@@ -17,10 +16,12 @@ level = [
 ]
 
 tile_size = 48
+player = pygame.sprite.GroupSingle()
+player.add(Player())
 def map(level_info,surface):
-    
-    #rendering the tiles on the screen
+    global tiles
     tiles = pygame.sprite.Group()
+    #rendering the tiles on the screen
     for row_index,row in enumerate(level_info):
         for column_index,column in enumerate(row):
             if column != " ":
@@ -29,4 +30,10 @@ def map(level_info,surface):
                 tile = Tile(column,(x,y))
                 tiles.add(tile)
 
+    for sprite in tiles.sprites():
+        if sprite.rect.colliderect(player.sprite.rect):
+            print("True")
+
+    player.draw(surface)
+    player.update()
     tiles.draw(surface)
