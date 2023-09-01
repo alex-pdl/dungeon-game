@@ -38,25 +38,8 @@ class Player(pygame.sprite.Sprite):
 
     def player_input(self):
         speed = 13
-        
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_w] and keys[pygame.K_a]:
-            self.rect.x -= speed
-            self.rect.y -= speed
-        elif keys[pygame.K_w] and keys[pygame.K_d]:
-            self.rect.y -= speed 
-            self.rect.x += speed
-        elif keys[pygame.K_s] and keys[pygame.K_a]:
-            self.rect.y += speed
-            self.rect.x -= speed
-        elif keys[pygame.K_s] and keys[pygame.K_d]:
-            self.rect.y += speed
-            self.rect.x += speed
-        elif keys[pygame.K_w]:
-            self.rect.y -= speed
-        elif keys[pygame.K_s]:
-            self.rect.y += speed
-        elif keys[pygame.K_a]:
+        if keys[pygame.K_a]:
             self.rect.x -= speed
         elif keys[pygame.K_d]:
             self.rect.x += speed
