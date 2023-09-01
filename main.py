@@ -1,4 +1,5 @@
 import pygame
+import time
 from sys import exit 
 from characters import Player
 
@@ -28,6 +29,6 @@ while True:
     #player sprite is drawn and moved/animated on the screen
     player.draw(screen)
     player.update()
-    
+    time.sleep(0.07)
     pygame.display.update()
-    clock.tick(5)
+    clock.tick(60)

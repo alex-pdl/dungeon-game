@@ -1,6 +1,10 @@
 import pygame
+import time
+import threading
+
 clock = pygame.time.Clock()
 class Player(pygame.sprite.Sprite):
+    condition = False
     def __init__(self):
         super().__init__()
 
@@ -36,28 +40,29 @@ class Player(pygame.sprite.Sprite):
         
 
     def player_input(self):
+        speed = 12
         
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w] and keys[pygame.K_a]:
-            self.rect.x -=5
-            self.rect.y -=5
+            self.rect.x -= speed
+            self.rect.y -= speed
         elif keys[pygame.K_w] and keys[pygame.K_d]:
-            self.rect.y -=5 
-            self.rect.x +=5
+            self.rect.y -= speed 
+            self.rect.x += speed
         elif keys[pygame.K_s] and keys[pygame.K_a]:
-            self.rect.y +=5
-            self.rect.x -=5
+            self.rect.y += speed
+            self.rect.x -= speed
         elif keys[pygame.K_s] and keys[pygame.K_d]:
-            self.rect.y +=5
-            self.rect.x +=5
+            self.rect.y += speed
+            self.rect.x += speed
         elif keys[pygame.K_w]:
-            self.rect.y -= 5
+            self.rect.y -= speed
         elif keys[pygame.K_s]:
-            self.rect.y += 5
+            self.rect.y += speed
         elif keys[pygame.K_a]:
-            self.rect.x -= 5
+            self.rect.x -= speed
         elif keys[pygame.K_d]:
-            self.rect.x += 5
+            self.rect.x += 10
 
 #Making the sprites change to create a walking animation dependant on direction of movement
     def animation_state(self):
@@ -90,7 +95,7 @@ class Player(pygame.sprite.Sprite):
                 self.player_right_move_index = 0
             self.image = self.player_right_move[self.player_right_move_index]
 
-
     def update(self):
         self.player_input()
         self.animation_state()
+            
