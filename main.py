@@ -1,18 +1,19 @@
 import pygame
 import time
 from sys import exit 
-from characters import Player
-
+from classes import *
+from map import *
+screen_width = 720
+screen_height = 480
 
 pygame.init()
-screen = pygame.display.set_mode((750,500))
+screen = pygame.display.set_mode((screen_width,screen_height))
 pygame.display.set_caption("Dungeon game")
 clock = pygame.time.Clock()
 
 
 #font = pygame.font.Font("assets/fonts/Pixeltype.ttf", 50)
 #loading map and player sprite from Player class
-map = pygame.image.load("assets/sprites/test_background.png")
 player = pygame.sprite.GroupSingle()
 player.add(Player())
 
@@ -24,11 +25,13 @@ while True:
             exit()
     #rendering map and background on screen
     screen.fill("white")
-    screen.blit(map,(0,0))
     
     #player sprite is drawn and moved/animated on the screen
     player.draw(screen)
     player.update()
-    time.sleep(0.05)
+    time.sleep(0.04)
+    map(level,screen)
+    
+    
     pygame.display.update()
     clock.tick(60)
