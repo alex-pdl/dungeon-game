@@ -4,12 +4,13 @@ import threading
 
 clock = pygame.time.Clock()
 class Player(pygame.sprite.Sprite):
-    gravity = -9.81
     def __init__(self):
         super().__init__()
-        #creating gravity
-        self.player_gravity = 0
-        
+        #player movement
+        self.direction = pygame.math.Vector2(0,0)
+        self.gravity = 1
+        self.speed = 8
+        self.jump_speed = -16
         #importing "still" sprites
         self.player_still_front = pygame.image.load("assets/sprites/soldier/soldier_still_front.png")
         self.player_still_back = pygame.image.load("assets/sprites/soldier/soldier_still_back.png")
@@ -38,20 +39,22 @@ class Player(pygame.sprite.Sprite):
         self.player_left_move_index = 0
 
         self.image = pygame.image.load("assets/sprites/soldier/soldier_still_front.png")
-        self.rect = self.image.get_rect(midbottom = (200,300))
+        self.rect = self.image.get_rect(midbottom = (200,100))
 
 #Making the movement functionality of the soldier
     def player_input(self):
-        speed = 13
         keys = pygame.key.get_pressed()
         if keys[pygame.K_a] or keys[pygame.K_LEFT]:
-            self.rect.x -= speed
+            self.direction.x = -1
         elif keys[pygame.K_d] or keys[pygame.K_RIGHT]:
-            self.rect.x += speed
+            self.direction.x = 1
+        else:
+            self.direction.x = 0
+        if keys[pygame.K_SPACE] and self.direction.y == 0:
+            self.jump()
 #Making the sprites change to create a walking animation dependant on direction of movement
     def animation_state(self):
-        keys = pygame.key.get_pressed()
-                   
+        keys = pygame.key.get_pressed()      
         if keys[pygame.K_a] or keys[pygame.K_LEFT]:
             self.image = self.player_still_left
             self.player_left_move_index += 1
@@ -73,19 +76,17 @@ class Player(pygame.sprite.Sprite):
         elif keys[pygame.K_SPACE] and self.image == self.player_left_move[0] or keys[pygame.K_SPACE] and self.image == self.player_left_move[1] or keys[pygame.K_SPACE] and self.image == self.player_left_move[2]:
             self.image = self.player_left_jump
 
-    def gravity(self):
-        keys = pygame.key.get_pressed()
-        self.player_gravity += 1
-        self.rect.y += self.player_gravity
-        if keys[pygame.K_SPACE]:
-            self.player_gravity = -15
-        #if self.rect.y >210:
-            #self.rect.y = 210
+    def gravity_apply(self):
+        if self.direction.y < 20:
+            self.direction.y += self.gravity
+        self.rect.y += self.direction.y
+
+    def jump(self):
+        self.direction.y = self.jump_speed
 
     def update(self):
         self.player_input()
         self.animation_state()
-        self.gravity()
 
             
 class Tile(pygame.sprite.Sprite):

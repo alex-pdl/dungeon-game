@@ -1,17 +1,15 @@
 import pygame
 from classes import Tile, Player
 level = [
-'                        ',
-'                        ',
-'                        ',
-'                        ',
-'                        ',
-'                        ',
-'NNNNN       NNNNNNNNNNNN',
-'NNMNNCNN    NTNNNNNNNNNN',
-'NNNNNNNN    NNNNNNNNNNNN',
-'NNNNNNNN    NNNNNNNNNNNN',
-'NNNNNNNN    NNNNNNNNNNNN',
+'N                      N',
+'N                      N',
+'N                      N',
+'N                      N',
+'N           NN         N',
+'N     NN    NN         N',
+'N           NN         N',
+'N           NTNNNNNNNNNN',
+'N           NNNNNNNNNNNN',
 'NNNNNNNN    NNNNNNNNNNNN',
 ]
 
@@ -30,9 +28,25 @@ def map(level_info,surface):
                 tile = Tile(column,(x,y))
                 tiles.add(tile)
 
+    player.sprite.rect.x += player.sprite.direction.x * 5
+
     for sprite in tiles.sprites():
         if sprite.rect.colliderect(player.sprite.rect):
-            print("True")
+            if player.sprite.direction.x < 0:
+                player.sprite.rect.left = sprite.rect.right
+            elif player.sprite.direction.x > 0:
+                player.sprite.rect.right = sprite.rect.left
+    
+    player.sprite.gravity_apply()
+
+    for sprite in tiles.sprites():
+        if sprite.rect.colliderect(player.sprite.rect):
+            if player.sprite.direction.y > 0:
+                player.sprite.rect.bottom = sprite.rect.top
+                player.sprite.direction.y = 0
+            elif player.sprite.direction.y < 0:
+                player.sprite.rect.top = sprite.rect.bottom
+                player.sprite.direction.y = 0
 
     player.draw(surface)
     player.update()
