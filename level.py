@@ -27,10 +27,10 @@ class Level:
                     player_sprite = Player((x,y))
                     self.player.add(player_sprite)
 
-
     def run(self):
         #level tiles
         self.tiles.update(self.world_shift)
         self.tiles.draw(self.display_surface)
         #player
+        self.player.update()
         self.player.draw(self.display_surface)
