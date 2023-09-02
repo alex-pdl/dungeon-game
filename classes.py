@@ -104,4 +104,7 @@ class Tile(pygame.sprite.Sprite):
         elif type == "C":
             self.image = pygame.image.load("assets/sprites/tiles/tile_chain.png")
             self.rect = self.image.get_rect(topleft = pos)
+   
+    def update(self,x_shift):
+        self.rect.x += x_shift
         
