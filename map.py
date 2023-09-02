@@ -29,7 +29,6 @@ def map(level_info,surface):
                 tiles.add(tile)
 
     player.sprite.rect.x += player.sprite.direction.x * 5
-    player.sprite.gravity_apply()
     #stops player from moving into tile horizontally
     for sprite in tiles.sprites():
         if sprite.rect.colliderect(player.sprite.rect):
@@ -38,7 +37,7 @@ def map(level_info,surface):
             elif player.sprite.direction.x > 0:
                 player.sprite.rect.right = sprite.rect.left
     
-
+    player.sprite.gravity_apply()
     #stops player from moving into tile vertically
     for sprite in tiles.sprites():
         if sprite.rect.colliderect(player.sprite.rect):
