@@ -20,7 +20,6 @@ while True:
             exit()
     #rendering map and background on screen
     screen.fill("grey")
-    
     time.sleep(0)
     map(level,screen)
     
