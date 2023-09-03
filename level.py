@@ -2,6 +2,7 @@ import pygame
 from tiles import Tile
 from settings import tile_size, screen_width, screen_height
 from player import Player
+from enemy import Enemy
 
 class Level:
     def __init__(self,level_data,surface):
@@ -11,6 +12,7 @@ class Level:
         self.world_shift_x = 0
         self.world_shift_y = 0
     def setup_level(self,layout):
+        self.cat = pygame.sprite.GroupSingle()
         self.player = pygame.sprite.GroupSingle()
         self.tiles = pygame.sprite.Group()
 
@@ -25,6 +27,7 @@ class Level:
                     elif column == "M" or column == "N" or column == "T" or column == "C":
                         tile = Tile((x,y),tile_size,column)
                         self.tiles.add(tile)
+        self.cat.add(Enemy(100,200))
 
     def camera_scrollx(self):
 
@@ -45,6 +48,8 @@ class Level:
 
     def vertical_movement_collision(self):
         player = self.player.sprite
+        cat = self.cat.sprite
+        cat.apply_gravity()
         player.apply_gravity()
 
         for sprite in self.tiles.sprites():
@@ -61,6 +66,8 @@ class Level:
 
     
     def horirozontal_movement_collision(self):
+
+
         player = self.player.sprite
         player.rect.x += player.direction.x * player.speed
 
@@ -95,5 +102,8 @@ class Level:
         self.player.draw(self.display_surface)
         self.horirozontal_movement_collision()
         self.vertical_movement_collision()  
+        #cat
+        self.cat.update()
+        self.cat.draw(self.display_surface)
 
 
