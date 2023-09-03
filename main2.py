@@ -13,7 +13,6 @@ clock = pygame.time.Clock()
 level = Level(level_map,screen)
 
 pygame.init()
-
 #game loop
 while True:
     for event in pygame.event.get():
