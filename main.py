@@ -4,6 +4,7 @@ from settings import *
 from tiles import Tile
 from settings import level_map
 from level import Level
+from enemy import Enemy
 
 
 screen_width = 720
