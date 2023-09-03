@@ -18,13 +18,13 @@ class Level:
             for column_index,column in enumerate(row):
                 x = column_index * tile_size
                 y = row_index * tile_size
-                if column == "N":
-                    tile = Tile((x,y),tile_size)
-                    self.tiles.add(tile)
-                if column == "S":
-                    player_sprite = Player((x,y))
-                    self.player.add(player_sprite)
-
+                if column != " ":
+                    if column == "S":
+                        player_sprite = Player((x,y))
+                        self.player.add(player_sprite)
+                    elif column == "M" or column == "N" or column == "T" or column == "C":
+                        tile = Tile((x,y),tile_size,column)
+                        self.tiles.add(tile)
     def camera_scrollx(self):
 
         player = self.player.sprite
