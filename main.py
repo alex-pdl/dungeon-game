@@ -11,12 +11,12 @@ screen_height = 480
 screen = pygame.display.set_mode((screen_width,screen_height))
 clock = pygame.time.Clock()
 level = Level(level_map,screen)
-background = pygame.image.load("assets/background/Untitled.png")
+background = pygame.image.load("assets/background/untitled.png")
 pygame.init()
 #game loop
 while True:
     for event in pygame.event.get():
-        if event.type == pygame.QUIT
+        if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
     screen.blit(background, (0,0))
