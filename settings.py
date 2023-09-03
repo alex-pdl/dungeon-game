@@ -1,4 +1,3 @@
-from classes import Tile, Player
 level_map = [
 'NNN                                             ',
 'NNN                                             ',
