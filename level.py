@@ -25,6 +25,7 @@ class Level:
                     elif column == "M" or column == "N" or column == "T" or column == "C":
                         tile = Tile((x,y),tile_size,column)
                         self.tiles.add(tile)
+
     def camera_scrollx(self):
 
         player = self.player.sprite
