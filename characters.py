@@ -104,6 +104,8 @@ class Enemy(pygame.sprite.Sprite):
         self.cat_right_move_index = 0
         self.cat_left_move = [self.cat_left_move_0,self.cat_still_left,self.cat_left_move_1]
         self.cat_left_move_index = 0
+        x = 0
+        y = 0
 
         self.direction = pygame.math.Vector2(x,y)
 
@@ -135,7 +137,7 @@ class Enemy(pygame.sprite.Sprite):
 
     def update(self):
         # Move the enemy downward (you can modify this for different movement patterns)
-        self.rect.x += self.speed
+        #self.rect.x += self.speed
         self.animation_state()
         self.apply_gravity()
 
