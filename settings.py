@@ -3,11 +3,11 @@ level_map = [
 'NNN                                             ',
 'NNN                                             ',
 'NNN                                             ',
-'NNN     S            NNNNNNNNNNNN    NNNNNNNNNNN',
+'NNN     S           NNNNNNNNNNNNN    NNNNNNNNNNN',
 'NNN     NN        NNNNNNNNNNNNNNNN   NNNNNNNNNNN',
-'NNN             NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN',
+'NNN            NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN ',
 'NNN           NTNNNNNNNNNNNNNNNNNNNN            ',
-'NNN           NNNNNNNNNNNNNNNNNNNNNN            ',
+'NNN  E        NNNNNNNNNNNNNNNNNNNNNNN           ',
 'NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN            ',]
 
 tile_size = 48

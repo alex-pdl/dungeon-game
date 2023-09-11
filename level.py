@@ -1,8 +1,7 @@
 import pygame
 from tiles import Tile
 from settings import tile_size, screen_width, screen_height
-from player import Player
-from enemy import Enemy
+from characters import Player, Enemy
 
 class Level:
     def __init__(self,level_data,surface):
@@ -24,10 +23,12 @@ class Level:
                     if column == "S":
                         player_sprite = Player((x,y))
                         self.player.add(player_sprite)
+                    elif column == "E":
+                        cat_sprite = Enemy((x,y))
+                        self.cat.add(cat_sprite)
                     elif column == "M" or column == "N" or column == "T" or column == "C":
                         tile = Tile((x,y),tile_size,column)
                         self.tiles.add(tile)
-        self.cat.add(Enemy(100,200))
 
     def camera_scrollx(self):
 
@@ -44,32 +45,11 @@ class Level:
         else:           
             self.world_shift_x = 0
             player.speed = 8
-
-
-    def vertical_movement_collision(self):
-        player = self.player.sprite
-        cat = self.cat.sprite
-        cat.apply_gravity()
-        player.apply_gravity()
-
-        for sprite in self.tiles.sprites():
-            if sprite.rect.colliderect(player.rect):
-                if player.direction.y > 0:
-                    player.rect.bottom = sprite.rect.top
-                    player.direction.y = 0
-                elif player.direction.y < 0:
-                    player.rect.top = sprite.rect.bottom
-                    player.direction.y = 0
-            self.world_shift_x = 0
-            player.speed = 8
-
-
-    
+            
     def horirozontal_movement_collision(self):
-
-
         player = self.player.sprite
         player.rect.x += player.direction.x * player.speed
+        cat = self.cat.sprite
 
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
@@ -77,10 +57,16 @@ class Level:
                     player.rect.left = sprite.rect.right
                 elif player.direction.x > 0:
                     player.rect.right = sprite.rect.left
+                #horizontal collisions for enemy
+                elif cat.direction.x < 0:
+                    cat.rect.left = sprite.rect.right
+                elif cat.direction.x > 0:
+                    cat.rect.right = sprite.rect.left
 
     def vertical_movement_collision(self):
         player = self.player.sprite
         player.apply_gravity()
+        cat = self.cat.sprite
 
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
@@ -90,8 +76,14 @@ class Level:
                 elif player.direction.y < 0:
                     player.rect.top = sprite.rect.bottom
                     player.direction.y = 0
-
-    
+            if sprite.rect.colliderect(cat.rect):
+                if cat.direction.y < 0:
+                    cat.rect.top = sprite.rect.bottom
+                    cat.direction.y = 0
+                elif cat.direction.y > 0:
+                    cat.rect.bottom = sprite.rect.top
+                    cat.direction.y = 0
+                
     def run(self):
         #level tiles
         self.tiles.update(self.world_shift_x,self.world_shift_y)
@@ -105,5 +97,3 @@ class Level:
         #cat
         self.cat.update()
         self.cat.draw(self.display_surface)
-
-
