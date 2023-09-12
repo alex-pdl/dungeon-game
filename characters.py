@@ -58,6 +58,13 @@ class Player(pygame.sprite.Sprite):
             if self.player_right_move_index >= 3:
                 self.player_right_move_index = 0
             self.image = self.player_right_move[self.player_right_move_index]
+            
+        # Jump animation
+        elif keys[pygame.K_SPACE] and self.image == self.player_left_move[0] or keys[pygame.K_SPACE] and self.image == self.player_left_move[1] or keys[pygame.K_SPACE] and self.image == self.player_left_move[2]:
+            self.image = self.player_left_jump
+
+        elif keys[pygame.K_SPACE] and self.image == self.player_right_move[0] or keys[pygame.K_SPACE] and self.image == self.player_right_move[1] or keys[pygame.K_SPACE] and self.image == self.player_right_move[2]:
+            self.image = self.player_right_jump
 
     def input(self):
         keys = pygame.key.get_pressed()
@@ -130,10 +137,6 @@ class Enemy(pygame.sprite.Sprite):
                 self.cat_left_move_index = 0
             self.image = self.cat_left_move[self.cat_left_move_index]
 
-        # Set the initial position of the enemy randomly on the screen
-        #self.rect.x = random.randint(0, 2000)
-        #self.rect.y = random.randint(0, 0)
-        # Set the speed of the enemy (adjust as needed)
 
     def update(self):
         # Move the enemy downward (you can modify this for different movement patterns)
