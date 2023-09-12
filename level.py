@@ -45,6 +45,17 @@ class Level:
         else:           
             self.world_shift_x = 0
             player.speed = 8
+    
+    def enemy_stationary(self):
+        cat = self.cat.sprite
+        self.cat_x = cat.rect.centerx
+        self.cat_direction_x = cat.direction.x
+        #Move the enemy with the map
+        if self.world_shift_x == -8:
+            self.cat_speed = 8
+        elif self.world_shift_x == 8:
+            self.cat_speed = 8
+
             
     def horirozontal_movement_collision(self):
         player = self.player.sprite
@@ -97,3 +108,4 @@ class Level:
         #cat
         self.cat.update()
         self.cat.draw(self.display_surface)
+        self.enemy_stationary()
