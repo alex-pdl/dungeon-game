@@ -3,7 +3,7 @@ level_map = [
 'NNN                                             ',
 'NNN                                             ',
 'NNN                                             ',
-'NNN     S           NNNNNNNNNNNNN    NNNNNNNNNNN',
+'NNN     S      N     NNNNNNNNNNNNN    NNNNNNNNNN',
 'NNN     NN        NNNNNNNNNNNNNNNN   NNNNNNNNNNN',
 'NNN            NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN ',
 'NNN           NTNNNNNNNNNNNNNNNNNNNN            ',

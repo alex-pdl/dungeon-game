@@ -138,11 +138,13 @@ class Enemy(pygame.sprite.Sprite):
             self.image = self.cat_left_move[self.cat_left_move_index]
 
 
-    def update(self):
+    def update(self,x_shift,y_shift):
         # Move the enemy downward (you can modify this for different movement patterns)
         #self.rect.x += self.speed
         self.animation_state()
         self.apply_gravity()
+        self.rect.x += x_shift
+        self.rect.y += y_shift
 
         # If the enemy goes off the screen, reset its position to the top
         #if self.rect.y > screen_height:

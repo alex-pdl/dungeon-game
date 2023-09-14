@@ -1,4 +1,3 @@
-#writing it all again
 import pygame,sys
 from settings import *
 from tiles import Tile
