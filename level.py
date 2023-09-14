@@ -26,7 +26,7 @@ class Level:
                     elif column == "E":
                         cat_sprite = Enemy((x,y))
                         self.cat.add(cat_sprite)
-                    elif column == "M" or column == "N" or column == "T" or column == "C":
+                    elif column == "T" or column == "L" or column == "R":
                         tile = Tile((x,y),tile_size,column)
                         self.tiles.add(tile)
 
