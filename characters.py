@@ -152,6 +152,11 @@ class Enemy(pygame.sprite.Sprite):
             #self.rect.x = random.randint(0, screen_width - self.rect.width)
 
 class Background(pygame.sprite.Sprite):
-    def __init__(self,x,y):
+    def __init__(self,pos):
         super().__init__()
-        pass
+        self.image = pygame.image.load("assets/background/background.png")
+        self.direction = pygame.math.Vector2(0,0)
+        self.rect = self.image.get_rect(topleft = pos)
+    def update(self,x_shift,y_shift):
+        self.rect.x += (x_shift * 0.7)
+        self.rect.y += (y_shift * 0.7)
