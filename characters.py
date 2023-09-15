@@ -160,3 +160,13 @@ class Background(pygame.sprite.Sprite):
     def update(self,x_shift,y_shift):
         self.rect.x += (x_shift * 0.7)
         self.rect.y += (y_shift * 0.7)
+    
+class Background_clouds(pygame.sprite.Sprite):
+    def __init__(self,pos):
+        super().__init__()
+        self.image = pygame.image.load("assets/background/background_clouds.png")
+        self.direction = pygame.math.Vector2(0,0)
+        self.rect = self.image.get_rect(topleft = pos)
+    def update(self,x_shift,y_shift):
+        self.rect.x += (x_shift * 0.3)
+        self.rect.y += (y_shift * 0.3)

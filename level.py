@@ -1,7 +1,7 @@
 import pygame
 from tiles import Tile
 from settings import tile_size, screen_width, screen_height
-from characters import Player, Enemy, Background
+from characters import Player, Enemy, Background,Background_clouds
 
 class Level:
     def __init__(self,level_data,surface):
@@ -14,8 +14,13 @@ class Level:
         self.cat = pygame.sprite.GroupSingle()
         self.player = pygame.sprite.GroupSingle()
         self.tiles = pygame.sprite.Group()
+        
         self.background = pygame.sprite.Group()
         background = Background((0,0))
+
+        self.background_clouds = pygame.sprite.Group()
+        background_clouds = Background_clouds((0,0))
+
         for row_index,row in enumerate(layout):
             for column_index,column in enumerate(row):
                 x = column_index * tile_size
@@ -31,8 +36,8 @@ class Level:
                         tile = Tile((x,y),tile_size,column)
                         self.tiles.add(tile)
         self.background.add(background)
-    def camera_scrollx(self):
 
+    def camera_scrollx(self):
         player = self.player.sprite
         player_x = player.rect.centerx
         direction_x = player.direction.x
@@ -89,6 +94,9 @@ class Level:
         #background
         self.background.update(self.world_shift_x,self.world_shift_y)
         self.background.draw(self.display_surface)
+        
+        self.background_clouds.update(self.world_shift_x,self.world_shift_y)
+        self.background_clouds.draw(self.display_surface)
         #level tiles
         self.tiles.update(self.world_shift_x,self.world_shift_y)
         self.tiles.draw(self.display_surface)
