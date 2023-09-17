@@ -9,6 +9,7 @@ screen_height = 433
 screen = pygame.display.set_mode((screen_width,screen_height))
 clock = pygame.time.Clock()
 level = Level(level_map,screen)
+background = pygame.image.load("assets/background/background.png")
 pygame.init()
 #game loop
 while True:
@@ -16,6 +17,7 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+    screen.blit(background,(0,0))
     level.run()
     pygame.display.update()
     clock.tick(60)

@@ -1,7 +1,7 @@
 import pygame
 from tiles import Tile
 from settings import tile_size, screen_width, screen_height
-from characters import Player, Enemy, Background,Background_clouds
+from characters import Player, Enemy, Foreground, Clouds
 
 class Level:
     def __init__(self,level_data,surface):
@@ -15,11 +15,11 @@ class Level:
         self.player = pygame.sprite.GroupSingle()
         self.tiles = pygame.sprite.Group()
         
-        self.background = pygame.sprite.Group()
-        background = Background((0,0))
+        self.foreground = pygame.sprite.Group()
+        foreground = Foreground((0,0))
 
-        self.background_clouds = pygame.sprite.Group()
-        background_clouds = Background_clouds((0,0))
+        self.clouds = pygame.sprite.Group()
+        clouds = Clouds((0,0))
 
         for row_index,row in enumerate(layout):
             for column_index,column in enumerate(row):
@@ -35,7 +35,9 @@ class Level:
                     elif column == "T" or column == "L" or column == "R":
                         tile = Tile((x,y),tile_size,column)
                         self.tiles.add(tile)
-        self.background.add(background)
+        #add to sprite group
+        self.foreground.add(foreground)
+        self.clouds.add(clouds)
 
     def camera_scrollx(self):
         player = self.player.sprite
@@ -92,11 +94,11 @@ class Level:
                 
     def run(self):
         #background
-        self.background.update(self.world_shift_x,self.world_shift_y)
-        self.background.draw(self.display_surface)
+        self.foreground.update(self.world_shift_x,self.world_shift_y)
+        self.foreground.draw(self.display_surface)
         
-        self.background_clouds.update(self.world_shift_x,self.world_shift_y)
-        self.background_clouds.draw(self.display_surface)
+        self.clouds.update(self.world_shift_x,self.world_shift_y)
+        self.clouds.draw(self.display_surface)
         #level tiles
         self.tiles.update(self.world_shift_x,self.world_shift_y)
         self.tiles.draw(self.display_surface)
